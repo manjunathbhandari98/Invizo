@@ -48,6 +48,19 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
+  const removeFromTheCart = (itemId) => {
+    setCartItems(cartItems.filter((item) => item.itemId !== itemId));
+  };
+
+  const updatedCartQuantity = (itemId, newQuantity) => {
+    setCartItems(
+      cartItems.map((item) =>
+        item.itemId === itemId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+    console.log(cartItems);
+  };
+
   // useEffect hook runs once when the component mounts
   useEffect(() => {
     if (localStorage.getItem("token") && localStorage.getItem("role")) {
@@ -79,6 +92,10 @@ export const AppContextProvider = ({ children }) => {
     setAuth({ token, role });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   // Value object that will be shared across all components using AppContext
   const contextValue = {
     categories, // List of all categories
@@ -90,6 +107,10 @@ export const AppContextProvider = ({ children }) => {
     users, //List of all users
     setUsers, // Function to update users
     addToCart,
+    cartItems,
+    removeFromTheCart,
+    updatedCartQuantity,
+    clearCart,
   };
 
   // Providing the context value to all children components
