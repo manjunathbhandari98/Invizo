@@ -14,13 +14,12 @@
     transition: color 0.3s;
 }
 
-.nav-link:hover {
-    color: #ccc !important;
+.active-link {
+    color: #f1c40f !important;
+    font-weight: bold;
 }
 
-.nav-link.active {
-    color: #fff !important;
-}
+
 
 .form-control {
     border-radius: 20px 0 0 20px;

@@ -1,0 +1,176 @@
+/* ---------- Base Container ---------- */
+.dashboard-wrapper {
+    padding: 20px;
+    background-color: #2c3335;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #f1f1f1;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---------- Typography ---------- */
+.dashboard-container h2,
+.recent-order-title {
+    color: #f8f9fa;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Stat Grid ---------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ---------- Stat Card ---------- */
+.stat-card {
+    background-color: #3b4142;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+    color: #4ecca3;
+    margin-right: 1rem;
+
+    /* Stylish circular background */
+    background: rgba(78, 204, 227, 0.15);
+    /* soft bluish background */
+    margin: 20px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   width: 44px;
+    height: 44px;
+}
+.stat-content h3 {
+    font-size: 1rem;
+    color: #d1d1d1;
+    margin: 0;
+}
+
+.stat-content p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #ffffff;
+}
+
+/* ---------- Recent Orders Section ---------- */
+.recent-order-card {
+    background-color: #3b4142;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ---------- Recent Orders Table ---------- */
+.order-table-container {
+    overflow-x: auto;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    background-color: white;
+    color: black;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #4a4f52;
+    vertical-align: middle;
+}
+
+
+/* ---------- Badge Styles ---------- */
+.badge {
+    font-size: 0.85em;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.bg-success {
+    background-color: #4ecca3;
+    color: #1c1c1c;
+}
+
+.bg-warning {
+    background-color: #f0ad4e;
+    color: #1c1c1c;
+}
+
+/* ---------- Loading / Error States ---------- */
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+    color: #d6d6d6;
+}
+
+/* ---------- Responsive Enhancements ---------- */
+@media (max-width: 768px) {
+    .stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .stat-icon {
+        font-size: 1.8rem;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .stat-content p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .recent-order-card {
+        padding: 1rem;
+    }
+
+    .orders-table {
+        font-size: 0.8rem;
+    }
+}

@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets.js";
 import { AppContext } from "../../context/AppContext.jsx";
 import "./MenuBar.css";
 
 const MenuBar = () => {
   const navigate = useNavigate();
-  const { setAuthData } = useContext(AppContext);
+  const location = useLocation();
+  const { setAuthData, auth } = useContext(AppContext);
   const onLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
@@ -14,11 +15,15 @@ const MenuBar = () => {
     navigate("/login");
   };
 
+  const isAdmin = auth.role === "ROLE_ADMIN";
+
+  const isActive = (path) => location.pathname === path;
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-2">
-      <Link className="navbar-brand" to="/">
+      <NavLink className="navbar-brand" to="/">
         <img src={assets.logo} alt="Logo" height="60" />
-      </Link>
+      </NavLink>
       <button
         className="navbar-toggler"
         type="button"
@@ -33,29 +38,69 @@ const MenuBar = () => {
       <div className="collapse navbar-collapse p-2" id="navbarNav">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">
+            <NavLink
+              className={`nav-link ${
+                isActive("/dashboard") ? "active-link" : ""
+              }`}
+              to="/dashboard"
+            >
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/explore">
+            <NavLink
+              className={`nav-link ${
+                isActive("/explore") ? "active-link" : ""
+              }`}
+              to="/explore"
+            >
               Explore
-            </Link>
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/manage-items">
-              Manage Items
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="manage-categories">
-              Manage Categories
-            </Link>
-          </li>
+          {isAdmin && (
+            <>
+              <li className="nav-item">
+                <NavLink
+                  className={`nav-link ${
+                    isActive("/manage-items") ? "active-link" : ""
+                  }`}
+                  to="/manage-items"
+                >
+                  Manage Items
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  className={`nav-link ${
+                    isActive("/manage-categories") ? "active-link" : ""
+                  }`}
+                  to="manage-categories"
+                >
+                  Manage Categories
+                </NavLink>
+              </li>
+              <li className="nav-items">
+                <NavLink
+                  className={`nav-link ${
+                    isActive("/manage-users") ? "active-link" : ""
+                  }`}
+                  to="/manage-users"
+                >
+                  Manage Users
+                </NavLink>
+              </li>
+            </>
+          )}
           <li className="nav-items">
-            <Link className="nav-link" to="/manage-users">
-              Manage Users
-            </Link>
+            <NavLink
+              className={`nav-link ${
+                isActive("/order-history") ? "acitve-link" : ""
+              }`}
+              to="/order-history"
+            >
+              Order History
+            </NavLink>
           </li>
         </ul>
         {/*    Add Profile Bar Here */}

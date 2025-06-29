@@ -99,13 +99,14 @@ const ItemForm = () => {
                     const selectedFile = e.target.files[0];
                     setImage(selectedFile);
                   }}
+                  required
                 />
               </div>
 
               {/* 🏷️ Name Input */}
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
-                  Name
+                  Name<span className="text-danger">*</span>
                 </label>
                 <input
                   type="text"
@@ -115,13 +116,14 @@ const ItemForm = () => {
                   onChange={onChangeHandler}
                   value={data.name}
                   placeholder="Item Name"
+                  required
                 />
               </div>
 
               {/* Category Select */}
               <div className="mb-3">
                 <label htmlFor="categoryId" className="form-label">
-                  Category
+                  Category<span className="text-danger">*</span>
                 </label>
                 <select
                   name="categoryId"
@@ -129,6 +131,7 @@ const ItemForm = () => {
                   id="categoryId"
                   onChange={onChangeHandler}
                   value={data.categoryId}
+                  required
                 >
                   <option value="">--SELECT CATEGORY--</option>
 
@@ -143,7 +146,7 @@ const ItemForm = () => {
               {/*  Price Input */}
               <div className="mb-3">
                 <label htmlFor="price" className="form-label">
-                  Price
+                  Price<span className="text-danger">*</span>
                 </label>
                 <input
                   type="number"
@@ -153,6 +156,7 @@ const ItemForm = () => {
                   onChange={onChangeHandler}
                   value={data.price}
                   placeholder="₹ 200.00"
+                  required
                 />
               </div>
 

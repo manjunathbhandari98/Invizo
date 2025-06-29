@@ -94,7 +94,7 @@ const CartSummary = ({
       cartItems,
       subtotal,
       tax,
-      grandTotal,
+      grandTotal: parseFloat(grandTotal.toFixed(2)),
       paymentMethod: paymentMode.toUpperCase(),
     };
 

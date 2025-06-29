@@ -55,7 +55,7 @@ const UserForm = () => {
             <form action="" onSubmit={onSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
-                  Name
+                  Name<span className="text-danger">*</span>
                 </label>
                 <input
                   type="text"
@@ -65,12 +65,13 @@ const UserForm = () => {
                   onChange={onChangeHandle}
                   value={data.name}
                   placeholder="Ramesh Tripati"
+                  required
                 />
               </div>
 
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
-                  Email
+                  Email<span className="text-danger">*</span>
                 </label>
                 <input
                   type="email"
@@ -80,12 +81,13 @@ const UserForm = () => {
                   onChange={onChangeHandle}
                   value={data.email}
                   placeholder="yourname@example.com"
+                  required
                 />
               </div>
 
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
-                  Password
+                  Password<span className="text-danger">*</span>
                 </label>
                 <input
                   type="password"
@@ -95,6 +97,7 @@ const UserForm = () => {
                   onChange={onChangeHandle}
                   value={data.password}
                   placeholder="*********"
+                  required
                 />
               </div>
 
